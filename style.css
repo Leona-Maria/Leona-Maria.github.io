@@ -1,124 +1,159 @@
-*
-head
-{
-  background-color: #000000;
-}
-body
-{
-  background-color: #000000;
-}
-.happyBirthday
-{
-  	letter-spacing: 0;
-  	padding: .25em 0 .325em;
-	  display: block;
-	  margin: 0 auto;
-  	text-shadow: 0 0 80px rgba(255,255,255,.5);
-	  background: #ffffff/*url("img/animated_text_fill.png") repeat-y;*/;
-    -webkit-background-clip: text;
-	  background-clip: text;
-	  -webkit-text-fill-color: transparent;
-	  -webkit-animation: aitf 80s linear infinite;
-	  -webkit-transform: translate3d(0,0,0);
-	  -webkit-backface-visibility: hidden;
-    font-family: 'Gruppo';
-    font-size: 60px;
-	color: white;
-}
-.message
-{
-  	letter-spacing: 0;
-  	padding: .25em 0 .325em;
-	  display: block;
-	  margin: 0 auto;
-  	text-shadow: 0 0 80px rgba(255,255,255,.5);
-	  background: #ffffff/*url("img/animated_text_fill.png") repeat-y;*/;
-    -webkit-background-clip: text;
-	  background-clip: text;
-	  -webkit-text-fill-color: transparent;
-	  -webkit-animation: aitf 80s linear infinite;
-	  -webkit-transform: translate3d(0,0,0);
-	  -webkit-backface-visibility: hidden;
-    font-family: 'Gruppo';
-    font-size: 50px;
-	color: white;
-}
-@-webkit-keyframes aitf
-{
-	0% { background-position: 0% 50%; }
-	100% { background-position: 100% 50%; }
-}
-/* infinity */
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-section
-{
+.paper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+}
+
+/* CSS paperfold effect */
+
+/* body */
+
+body{
   background: #000000;
+  padding: 5%;
+  min-width: 650px;
 }
-section .container
-{
-  display: flex;
-}
-section .container .circle
-{
+
+h1 { margin: 0em }
+
+/* paper */
+
+.foldtr{
   position: relative;
-  width: 170px;
-  height: 170px;
-  margin: 0 -7.5px;
+  height: 300px;
+  width: 300px;
+  padding: 0px;
+  background: #fff;
 }
-section .container .circle span
-{
+
+.foldbr{
+  position: relative;
+  height: 300px;
+  width: 300px;
+  padding: 0px;
+  background: #fff;
+}
+
+.foldtl{
+  position: relative;
+  height: 300px;
+  width: 300px;
+  padding: 0px;
+  background: #fff;
+}
+
+.foldbl{
+  position: relative;
+  height: 300px;
+  width: 300px;
+  padding: 0px;
+  background: #fff;
+}
+
+/* paperfold using pseudo class */
+
+.foldtr:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 0 295 295 0;
+  border-color: #ddd #000000;
+  transition: all ease .5s;
+}
+
+.foldbr:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 295 295 0 0;
+  border-color: #ddd #000000;
+  transition: all ease .5s;
+}
+
+.foldtl:before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  transform: rotate(calc(18deg * var(--i)));
-  /* 360 / 20 = 18deg */
+  border-style: solid;
+  border-width: 0 0 295 295;
+  border-color: #ddd #000000;
+  transition: all ease .5s;
 }
-section .container .circle span::before
-{
-  content: '';
+
+.foldbl:before {
+  content: "";
   position: absolute;
-  right: 0;
-  top: calc(50% - 7.5px);
-  width: 15px;
-  height: 15px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #ffffff,
-  0 0 20px #ffffff,
-  0 0 40px #ffffff,
-  0 0 60px #ffffff,
-  0 0 80px #ffffff,
-  0 0 100px #ffffff;
-  transform: scale(0.1);
-  animation: animate 4s linear infinite;
-  animation-delay: calc(0.1s * var(--i));
+  bottom: 0;
+  left: 0;
+  border-style: solid;
+  border-width: 295 0 0 295;
+  border-color: #ddd #000000;
+  transition: all ease .5s;
 }
-@keyframes animate
-{
-  0%
-  {
-    transform: scale(1);
-  }
-  50%,100%
-  {
-    transform: scale(0.1);
-  }
+
+/* on hover animate slightly */
+
+.foldtr:hover:before {
+  border-width: 0 100 100 0;
+  border-color: #fff;
 }
-section .container .circle:nth-child(2)
-{
-  transform: rotate(-180deg);
+
+.foldbr:hover:before {
+  border-width: 100 100 0 0;
+  border-color: #fff;
 }
-section .container .circle:nth-child(2) span::before
-{
-  animation-delay: calc(-0.1s * var(--i));
+
+.foldtl:hover:before {
+  border-width: 0 0 100 100;
+  border-color: #fff;
+}
+
+.foldbl:hover:before {
+  border-width: 100 0 0 100;
+  border-color: #fff;
+}
+
+/* buttons */
+
+#tlbtn {
+  display: none;
+}
+#tlbtn:checked + label > img {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+
+#trbtn {
+  display: none;
+}
+#trbtn:checked + label > img {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+
+#blbtn {
+  display: none;
+}
+#blbtn:checked + label > img {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+
+#brbtn {
+  display: none;
+}
+#brbtn:checked + label > img {
+  position: absolute;
+  width: 300px;
+  height: 300px;
 }
